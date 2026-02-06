@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Gastos Mensais</title>
+</head>
+<body>
+    <h1>Calculadora de Gastos Mensais</h1>
+
+    <label for="salario">Salário:</label>
+    <input type="number" id="salario" step="0.01" placeholder="Digite o salário">
+
+    <label for="aluguel">Aluguel:</label>
+    <input type="number" id="aluguel" step="0.01" placeholder="Digite o aluguel">
+
+    <label for="alimentacao">Alimentação:</label>
+    <input type="number" id="alimentacao" step="0.01" placeholder="Digite a alimentação">
+
+    <label for="lazer">Lazer:</label>
+    <input type="number" id="lazer" step="0.01" placeholder="Digite o lazer">
+
+    <button onclick="calcularGastos()">Calcular</button>
+
+    <p id="resultado"></p>
+
+    <script src="ex2.js"></script>
+</body>
+</html>

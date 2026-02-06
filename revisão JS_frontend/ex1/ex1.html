@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificar Tarefa e Prioridade</title>
+</head>
+<body>
+    <h1>Verificador de Tarefa e Prioridade</h1>
+    
+    <label for="tarefa">Tarefa:</label>
+    <input type="text" id="tarefa" placeholder="Digite a tarefa">
+    
+    <label for="hora">Hora (0-23):</label>
+    <input type="number" id="hora" min="0" max="23" placeholder="Digite a hora">
+    
+    <label for="prioridade">Prioridade (1-10):</label>
+    <input type="number" id="prioridade" min="1" max="10" placeholder="Digite a prioridade">
+    
+    <button onclick="verificarTarefaePrioridade()">Verificar</button>
+    
+    <p id="resultado"></p>
+
+    <script src="ex1.js"></script>
+</body>
+</html>

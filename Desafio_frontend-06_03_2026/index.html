@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram - Projeto Final</title>
+    <!-- Font Awesome para ícones -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* =========================================
+           RESETS E VARIÁVEIS
+           ========================================= */
+        :root {
+            --bg-color: #fafafa;
+            --border-color: #dbdbdb;
+            --text-main: #262626;
+            --text-secondary: #8e8e8e;
+            --link-color: #0095f6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.5;
+        }
+
+        /* =========================================
+           HEADER / NAVBAR (Flexbox)
+           ========================================= */
+        .navbar {
+            background-color: #fff;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-container {
+            width: 100%;
+            max-width: 975px;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Segoe UI', sans-serif;
+            font-weight: bold;
+            font-size: 24px;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .search-bar {
+            display: none;
+        }
+
+        @media (min-width: 768px) {
+            .search-bar {
+                display: block;
+                background: #efefef;
+                padding: 5px 15px;
+                border-radius: 8px;
+                width: 250px;
+            }
+            .search-bar input {
+                background: transparent;
+                border: none;
+                outline: none;
+                width: 100%;
+            }
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 22px;
+            font-size: 22px;
+            align-items: center;
+        }
+
+        .nav-icons i, .nav-icons .profile-img-nav {
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .nav-icons i:hover, .nav-icons .profile-img-nav:hover {
+            transform: scale(1.1);
+        }
+
+        .profile-img-nav {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid var(--border-color);
+        }
+
+        /* =========================================
+           FEED E STORIES
+           ========================================= */
+        main {
+            max-width: 935px;
+            margin: 30px auto;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .stories-container {
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 16px;
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .stories-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .story-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 70px;
+            cursor: pointer;
+        }
+
+        .story-ring {
+            width: 66px;
+            height: 66px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .story-ring img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            object-fit: cover;
+        }
+
+        .story-item span {
+            font-size: 12px;
+            max-width: 70px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        /* =========================================
+           POSTS (Article)
+           ========================================= */
+        .post {
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 24px;
+        }
+
+        .post-header {
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .user-info img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .post-media {
+            width: 100%;
+            background-color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .post-media img, .post-media video {
+            width: 100%;
+            max-height: 600px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .post-actions {
+            padding: 8px 16px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 24px;
+        }
+
+        .post-actions div {
+            display: flex;
+            gap: 16px;
+        }
+
+        .post-actions i {
+            cursor: pointer;
+        }
+
+        .post-actions .fa-heart.active {
+            color: #ed4956;
+        }
+
+        .post-content {
+            padding: 0 16px 12px;
+        }
+
+        .likes-count {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .caption strong {
+            margin-right: 5px;
+        }
+
+        .comments-preview {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 5px;
+            cursor: pointer;
+        }
+
+        .add-comment {
+            border-top: 1px solid var(--border-color);
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .add-comment input {
+            border: none;
+            outline: none;
+            flex: 1;
+        }
+
+        .add-comment button {
+            background: transparent;
+            border: none;
+            color: var(--link-color);
+            font-weight: bold;
+            cursor: pointer;
+            opacity: 0.5;
+        }
+
+        .add-comment button.active {
+            opacity: 1;
+        }
+
+        /* =========================================
+           MODAIS E NOTIFICAÇÕES
+           ========================================= */
+        #toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #262626;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            z-index: 2000;
+            display: none;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85);
+            z-index: 1500;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: #fff;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 400px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 10px; right: 15px;
+            font-size: 30px;
+            color: #fff;
+            cursor: pointer;
+            z-index: 1600;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navegação -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Instagram</a>
+            <div class="search-bar">
+                <input type="text" placeholder="Pesquisar">
+            </div>
+            <nav class="nav-icons">
+                <i class="fa-solid fa-house" title="Início"></i>
+                <i class="fa-regular fa-paper-plane" id="btn-messages"></i>
+                <i class="fa-regular fa-square-plus"></i>
+                <i class="fa-regular fa-compass"></i>
+                <i class="fa-regular fa-heart"></i>
+                <img src="Captura de tela 2026-03-06 135539.png" class="profile-img-nav" alt="O meu Perfil">
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Seção de Stories -->
+        <section class="stories-container" id="stories-list">
+            <!-- Gerado via JS -->
+        </section>
+
+        <!-- Post 1: VÍDEO NOVO -->
+        <article class="post">
+            <header class="post-header">
+                <div class="user-info">
+                    <img src="f878b0b5-e1d1-4fdf-9eb9-1dc50e148cde.jpg" alt="Avatar">
+                    <strong>trem_da_natureza</strong>
+                </div>
+                <i class="fa-solid fa-ellipsis"></i>
+            </header>
+            
+            <div class="post-media">
+                <video controls loop muted playsinline>
+                    <source src="grok-video-82a2c864-6465-45f8-b4f2-de55cab97e9d.mp4" type="video/mp4">
+                    O seu navegador não suporta vídeos.
+                </video>
+            </div>
+
+            <div class="post-actions">
+                <div>
+                    <i class="fa-regular fa-heart btn-like"></i>
+                    <i class="fa-regular fa-comment btn-comment"></i>
+                    <i class="fa-regular fa-paper-plane btn-share"></i>
+                </div>
+                <i class="fa-regular fa-bookmark btn-save"></i>
+            </div>
+
+            <div class="post-content">
+                <div class="likes-count"><span>12.450</span> gostos</div>
+                <div class="caption">
+                    <strong>trem_da_natureza</strong> Olhem só este vídeo incrível!🌿 #natureza
+                </div>
+            </div>
+
+            <div class="add-comment">
+                <input type="text" placeholder="Adicione um comentário..." class="comment-input">
+                <button class="post-btn">Publicar</button>
+            </div>
+        </article>
+
+        <!-- Post 2: IMAGEM NOVA -->
+        <article class="post">
+            <header class="post-header">
+                <div class="user-info">
+                    <img src="qWEDWQFEQWRFE.jpg" alt="Avatar">
+                    <strong>desenvolvedor_web</strong>
+                </div>
+                <i class="fa-solid fa-ellipsis"></i>
+            </header>
+            
+            <div class="post-media">
+                <img src="waewfewwewewefwwew4ew.jpg" alt="Post de Programação">
+            </div>
+
+            <div class="post-actions">
+                <div>
+                    <i class="fa-regular fa-heart btn-like"></i>
+                    <i class="fa-regular fa-comment btn-comment"></i>
+                    <i class="fa-regular fa-paper-plane btn-share"></i>
+                </div>
+                <i class="fa-regular fa-bookmark btn-save"></i>
+            </div>
+
+            <div class="post-content">
+                <div class="likes-count"><span>5.120</span> gostos</div>
+                <div class="caption">
+                    <strong>desenvolvedor_web</strong> Novo setup de programação! 💻🚀 #coding #frontend
+                </div>
+            </div>
+
+            <div class="add-comment">
+                <input type="text" placeholder="Adicione um comentário..." class="comment-input">
+                <button class="post-btn">Publicar</button>
+            </div>
+        </article>
+
+        <!-- Post 3: MACACO -->
+        <article class="post">
+            <header class="post-header">
+                <div class="user-info">
+                    <img src="WEFwf.jpg" alt="Avatar">
+                    <strong>macaco</strong>
+                </div>
+                <i class="fa-solid fa-ellipsis"></i>
+            </header>
+            
+            <div class="post-media">
+                <img src="image.jpg.jpg" alt="Macaco">
+            </div>
+
+            <div class="post-actions">
+                <div>
+                    <i class="fa-regular fa-heart btn-like"></i>
+                    <i class="fa-regular fa-comment btn-comment"></i>
+                    <i class="fa-regular fa-paper-plane btn-share"></i>
+                </div>
+                <i class="fa-regular fa-bookmark btn-save"></i>
+            </div>
+
+            <div class="post-content">
+                <div class="likes-count"><span>7.039.002</span> gostos</div>
+                <div class="caption">
+                    <strong>macaco_curioso</strong> A relaxar depois de um longo dia... 🐒🍌
+                </div>
+            </div>
+
+            <div class="add-comment">
+                <input type="text" placeholder="Adicione um comentário..." class="comment-input">
+                <button class="post-btn">Publicar</button>
+            </div>
+        </article>
+
+        <!-- Post 4: CAFÉ -->
+        <article class="post">
+            <header class="post-header">
+                <div class="user-info">
+                    <img src="imagesvarezasrthdz.jpg" alt="Avatar">
+                    <strong>quero_cafééééééééé</strong>
+                </div>
+                <i class="fa-solid fa-ellipsis"></i>
+            </header>
+            
+            <div class="post-media">
+                <img src="15b3439b-79eb-4c3e-b460-9cf7b2e54c56.jpg" alt="Foto de Café">
+            </div>
+
+            <div class="post-actions">
+                <div>
+                    <i class="fa-regular fa-heart btn-like"></i>
+                    <i class="fa-regular fa-comment btn-comment"></i>
+                    <i class="fa-regular fa-paper-plane btn-share"></i>
+                </div>
+                <i class="fa-regular fa-bookmark btn-save"></i>
+            </div>
+
+            <div class="post-content">
+                <div class="likes-count"><span>2.300</span> gostos</div>
+                <div class="caption">
+                    <strong>quero_cafééééééééé</strong> Nada melhor que um café para começar bem o dia. ☕️☁️
+                </div>
+            </div>
+
+            <div class="add-comment">
+                <input type="text" placeholder="Adicione um comentário..." class="comment-input">
+                <button class="post-btn">Publicar</button>
+            </div>
+        </article>
+    </main>
+
+    <!-- Notificação Toast -->
+    <div id="toast">Ação realizada com sucesso!</div>
+
+    <!-- Modal de Stories -->
+    <div class="modal-overlay" id="modal-story">
+        <span class="modal-close" id="close-modal">&times;</span>
+        <div class="modal-content">
+            <div id="story-content" style="height: 500px; display: flex; align-items: center; justify-content: center; background: #000; color: #fff;">
+                <!-- Conteúdo dinâmico -->
+            </div>
+            <div style="padding: 15px;">
+                <input type="text" placeholder="Responder ao story..." style="width: 100%; padding: 8px; border-radius: 20px; border: 1px solid #dbdbdb;">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // 1. Lógica do Toast
+            const toast = document.getElementById('toast');
+            window.showToast = (msg) => {
+                toast.textContent = msg;
+                toast.style.display = 'block';
+                setTimeout(() => { toast.style.display = 'none'; }, 3000);
+            };
+
+            // 2. Mock de Stories (usando as novas imagens)
+            const storiesData = [
+                { name: 'O meu Story', img: 'Captura de tela 2026-03-06 135539.png' },
+                { name: 'desenvolvedor', img: 'waewfewwewewefwwew4ew.jpg' },
+                { name: 'natureza', img: 'imagesvarezasrthdz.jpg' },
+                { name: 'quero_cafe', img: '15b3439b-79eb-4c3e-b460-9cf7b2e54c56.jpg' },
+                { name: 'macaco', img: 'image.jpg.jpg' }
+            ];
+
+            const storiesList = document.getElementById('stories-list');
+            storiesData.forEach(s => {
+                const div = document.createElement('div');
+                div.className = 'story-item';
+                div.innerHTML = `
+                    <div class="story-ring"><img src="${s.img}" alt="${s.name}"></div>
+                    <span>${s.name}</span>
+                `;
+                div.onclick = () => openStory(s.name, s.img);
+                storiesList.appendChild(div);
+            });
+
+            // 3. Modal de Stories
+            const modal = document.getElementById('modal-story');
+            const storyContent = document.getElementById('story-content');
+            
+            function openStory(name, img) {
+                storyContent.innerHTML = `
+                    <div style="text-align:center">
+                        <img src="${img}" style="max-width:100%; max-height:400px; border-radius:10px; margin-bottom:10px">
+                        <h2>Story de ${name}</h2>
+                    </div>
+                `;
+                modal.style.display = 'flex';
+            }
+
+            document.getElementById('close-modal').onclick = () => {
+                modal.style.display = 'none';
+            };
+
+            // 4. Interações de Post
+            document.querySelectorAll('.post').forEach(post => {
+                const btnLike = post.querySelector('.btn-like');
+                const btnSave = post.querySelector('.btn-save');
+                const btnShare = post.querySelector('.btn-share');
+                const input = post.querySelector('.comment-input');
+                const btnPost = post.querySelector('.post-btn');
+                const likesSpan = post.querySelector('.likes-count span');
+
+                btnLike.onclick = () => {
+                    const active = btnLike.classList.toggle('fa-solid');
+                    btnLike.classList.toggle('fa-regular');
+                    btnLike.classList.toggle('active');
+                    
+                    let count = parseInt(likesSpan.textContent.replace('.', '').replace(',', ''));
+                    count = active ? count + 1 : count - 1;
+                    likesSpan.textContent = count.toLocaleString('pt-PT');
+                    
+                    if(active) showToast('Gostou deste post!');
+                };
+
+                btnSave.onclick = () => {
+                    const active = btnSave.classList.toggle('fa-solid');
+                    btnSave.classList.toggle('fa-regular');
+                    showToast(active ? 'Guardado na sua coleção' : 'Removido dos itens guardados');
+                };
+
+                btnShare.onclick = () => {
+                    showToast('Link copiado!');
+                };
+
+                input.oninput = () => {
+                    btnPost.classList.toggle('active', input.value.length > 0);
+                };
+
+                btnPost.onclick = () => {
+                    if(input.value.length > 0) {
+                        showToast('Comentário publicado!');
+                        input.value = '';
+                        btnPost.classList.remove('active');
+                    }
+                };
+            });
+
+            // 5. Fechar modal ao clicar fora
+            window.onclick = (event) => {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            };
+        });
+    </script>
+</body>
+</html>

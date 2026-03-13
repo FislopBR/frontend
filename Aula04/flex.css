@@ -1,0 +1,45 @@
+/* Reset e box-sizing */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+
+/* Container externo azul-claro centrado */
+.outer{
+	min-height:100vh;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	background:#e9faff; /* fundo da página */
+	padding:18px;
+}
+
+.container{
+	width:500px;
+    height: 500px;
+	background:#14ffe0; /* azul-claro do container pedido */
+	padding:18px;
+	border:1px solid #000; /* borda escura como na imagem */
+}
+
+/* Três retângulos empilhados (coluna) */
+.container{display:flex;flex-direction:column;}
+.row{
+	display:flex;
+	align-items:center;
+	justify-content:space-evenly; /* espaça igualmente os 3 quadrados */
+	padding:41px 12px;
+	border:1px solid #000;
+}
+
+/* cores dos retângulos para se aproximar da imagem */
+.row--peach{background:#ffcaa0}
+.row--lime{background:#cfff2a}
+.row--blue{background:#7f9fc3}
+
+/* Quadrados iguais dentro de cada retângulo */
+.square{
+	width:70px;
+	height:70px;
+	max-width:22%;
+	background:#ff7f24; /* laranja */
+	border:1px solid #000;
+}

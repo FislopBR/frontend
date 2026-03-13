@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartão em Tempo Real</title>
+    <link rel="stylesheet" href="exf2.css">
+</head>
+<body>
+    <div class="container">
+        <form class="form-section">
+            <h1>Formulário de Cartão</h1>
+            
+            <div class="form-group">
+                <label for="nome">Nome:</label>
+                <input 
+                    type="text" 
+                    id="nome" 
+                    placeholder="Digite seu nome"
+                    oninput="atualizarCartao()"
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="cargo">Cargo:</label>
+                <input 
+                    type="text" 
+                    id="cargo" 
+                    placeholder="Digite seu cargo"
+                    oninput="atualizarCartao()"
+                >
+            </div>
+
+            <div class="form-group">
+                <label>Cor de Fundo:</label>
+                <div class="color-buttons">
+                    <button type="button" class="color-btn" style="background-color: #007bff;" onclick="mudarCor('#007bff')"></button>
+                    <button type="button" class="color-btn" style="background-color: #dc3545;" onclick="mudarCor('#dc3545')"></button>
+                    <button type="button" class="color-btn" style="background-color: #28a745;" onclick="mudarCor('#28a745')"></button>
+                    <button type="button" class="color-btn" style="background-color: #fd7e14;" onclick="mudarCor('#fd7e14')"></button>
+                    <button type="button" class="color-btn" style="background-color: #6f42c1;" onclick="mudarCor('#6f42c1')"></button>
+                </div>
+            </div>
+        </form>
+
+        <div class="card-section">
+            <h1>Cartão</h1>
+            <div class="card" id="cartao">
+                <div class="card-content">
+                    <p class="card-nome" id="cartao-nome">Nome aqui</p>
+                    <p class="card-cargo" id="cartao-cargo">Cargo aqui</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="exf2.js"></script>
+</body>
+</html>

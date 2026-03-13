@@ -1,0 +1,107 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    gap: 20px;
+    max-width: 800px;
+}
+
+/* SEÇÃO DO FORMULÁRIO */
+.form-section {
+    flex: 1;
+    background: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+
+.form-section h1 {
+    font-size: 18px;
+    color: #000;
+    margin-bottom: 15px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #000;
+    font-size: 13px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #999;
+    font-size: 13px;
+}
+
+.form-group input:focus {
+    outline: none;
+    border: 1px solid #000;
+}
+
+.color-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.color-btn {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #000;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.color-btn:hover {
+    transform: scale(1.1);
+}
+
+.color-btn:active {
+    border: 3px solid #000;
+}
+
+/* SEÇÃO DO CARTÃO */
+.card-section {
+    flex: 1;
+}
+
+.card-section h1 {
+    font-size: 18px;
+    color: #000;
+    margin-bottom: 15px;
+}
+
+.card {
+    width: 100%;
+    min-height: 250px;
+    border: 2px solid #000;
+    background: #007bff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.card-content {
+    text-align: center;
+    color: white;
+}
+
+.card-nome {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.card-cargo {
+    font-size: 14px;
+}

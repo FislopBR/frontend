@@ -13,6 +13,7 @@ function App() {
       <Painel/>
       <Perfil/>
       <Usuario nome="Filippo" idade={18} sexo="masculino" />
+      <Painel2/>
     </div>
   )
 }
@@ -52,6 +53,23 @@ function Usuario({ nome, idade, sexo }) {
       <p>Nome: {nome}</p>
       <p>Idade: {idade} anos</p>
       <p>Sexo: {sexo}</p>
+    </div>
+  )
+}
+
+function Painel2() {
+  const [texto,setTexto] = useState('');
+
+  return (
+    <div style={{background:'#f9f9f9', padding: '15px', borfer: '1px dashed #666', marginTop: '20px'}}>
+      <h4>Escreva uma mensagem</h4>
+      <input 
+      type="text"
+      placeholder='Digite algo'
+      onChange={(e) => setTexto(e.target.value)}
+      style={{padding: '8px', width: '80%'}}
+      />
+      <p>O que você digitou: <span style={{color: 'red'}}>{texto}</span></p>
     </div>
   )
 }

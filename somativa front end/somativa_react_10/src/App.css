@@ -1,0 +1,299 @@
+:root { /* [cite: 125] */
+  --palestra: #0284c7; /* Azul [cite: 127] */
+  --workshop: #f59e0b; /* Âmbar/Amarelo [cite: 128] */
+  --painel: #10b981; /* Verde [cite: 129] */
+  --bg-encerrado: #e5e7eb; /* [cite: 130] */
+}
+
+.app-container { /* [cite: 131] */
+  max-width: 900px; /* [cite: 133] */
+  margin: 2rem auto; /* [cite: 134] */
+  padding: 0 1rem; /* [cite: 135] */
+  font-family: system-ui, -apple-system, sans-serif; /* [cite: 136] */
+  color: #1f2937; /* [cite: 137] */
+}
+
+/* =========================================
+   ESTILIZAÇÃO MARCANTE 1: HEADER
+   ========================================= */
+header { /* [cite: 138] */
+  text-align: center; /* [cite: 140] */
+  margin-bottom: 2.5rem; /* [cite: 141] */
+  background: linear-gradient(135deg, #4f46e5, #0284c7); /* Fundo com degradê */
+  color: white; 
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+header h1 { /* [cite: 142] */
+  font-size: 2.5rem; /* [cite: 143] */
+  margin: 0; /* [cite: 144] */
+  color: white; /* Alterado para combinar com o degradê [cite: 146] */
+}
+
+.clear-btn {
+  margin-top: 15px;
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.form-section form { /* [cite: 147] */
+  display: flex; /* [cite: 149] */
+  gap: 12px; /* [cite: 150] */
+  background: #f3f4f6; /* [cite: 151] */
+  padding: 20px; /* [cite: 152] */
+  border-radius: 10px; /* [cite: 153] */
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05); /* [cite: 154] */
+}
+
+.form-section input { /* [cite: 155] */
+  flex: 3; /* [cite: 157] */
+  padding: 12px; /* [cite: 158] */
+  border: 1px solid #d1d5db; /* [cite: 159] */
+  border-radius: 6px; /* [cite: 160] */
+  font-size: 1rem; /* [cite: 161] */
+}
+
+.form-section select { /* [cite: 162] */
+  flex: 1; /* [cite: 164] */
+  padding: 12px; /* [cite: 165] */
+  border: 1px solid #d1d5db; /* [cite: 166] */
+  border-radius: 6px; /* [cite: 167] */
+  font-size: 1rem; /* [cite: 168] */
+  background: white; /* [cite: 169] */
+}
+
+.form-section button { /* [cite: 170] */
+  padding: 12px 24px; /* [cite: 172] */
+  background: #4f46e5; /* [cite: 173] */
+  color: white; /* [cite: 174] */
+  border: none; /* [cite: 175] */
+  border-radius: 6px; /* [cite: 176] */
+  font-weight: 600; /* [cite: 177] */
+  cursor: pointer; /* [cite: 178] */
+}
+
+.search-section {
+  margin-top: 15px;
+}
+.search-section input {
+  width: 100%;
+  padding: 12px; /* */
+  border: 1px solid var(--border-color-light);
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.filter-section { /* [cite: 179] */
+  display: flex; /* [cite: 181] */
+  justify-content: center; /* [cite: 182] */
+  gap: 8px; /* [cite: 183] */
+  margin: 24px 0; /* [cite: 184] */
+}
+
+.filter-section button { /* [cite: 185] */
+  padding: 8px 16px; /* [cite: 187] */
+  background: #f3f4f6; /* [cite: 188] */
+  border: 1px solid #e5e7eb; /* [cite: 189] */
+  border-radius: 20px; /* [cite: 190] */
+  cursor: pointer; /* [cite: 191] */
+  transition: all 0.2s; /* [cite: 192] */
+}
+
+.filter-section button.active { /* [cite: 193] */
+  background: #111827; /* [cite: 195] */
+  color: white; /* [cite: 196] */
+  border-color: #111827; /* [cite: 197] */
+}
+
+.event-grid { /* [cite: 198] */
+  display: grid; /* [cite: 200] */
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* [cite: 201] */
+  gap: 20px; /* [cite: 202] */
+}
+
+/* =========================================
+   ESTILIZAÇÃO MARCANTE 2: HOVER DOS CARDS
+   ========================================= */
+.event-card { /* [cite: 203] */
+  padding: 18px; /* [cite: 205] */
+  border-radius: 8px; /* [cite: 206] */
+  border-top: 6px solid #ccc; /* Fallback [cite: 207] */
+  background: white; /* [cite: 208] */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); /* [cite: 209] */
+  display: flex; /* [cite: 210] */
+  flex-direction: column; /* [cite: 211] */
+  justify-content: space-between; /* [cite: 212] */
+  min-height: 180px; /* [cite: 213] */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animação suave */
+}
+
+.event-card:hover {
+  transform: translateY(-5px); /* Efeito de elevação */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.15); /* Sombra mais forte */
+}
+
+/* Estilização Condicional por Tipo (Borda Superior) [cite: 214] */
+.event-card.palestra { border-top-color: var(--palestra); } /* [cite: 215] */
+.event-card.workshop { border-top-color: var(--workshop); } /* [cite: 215] */
+.event-card.painel { border-top-color: var(--painel); } /* [cite: 215] */
+
+/* Estilização Condicional por Status [cite: 216] */
+@keyframes pulse {
+  0% { border-top-width: 6px; }
+  100% { border-top-width: 10px; }
+}
+
+.event-card.em-andamento { /* [cite: 217] */
+  animation: pulse 2s infinite alternate; /* Animacao corrigida [cite: 219] */
+  background: #fbfbfe; /* [cite: 220] */
+}
+
+.event-card.encerrado { /* [cite: 221] */
+  opacity: 0.55; /* [cite: 223] */
+  background: var(--bg-encerrado); /* [cite: 224] */
+  box-shadow: none; /* [cite: 225] */
+}
+
+.event-content h3 { /* [cite: 226] */
+  margin: 0 0 12px 0; /* [cite: 228] */
+  font-size: 1.2rem; /* [cite: 229] */
+}
+
+.event-tag, .status-badge, .vagas-badge { /* [cite: 230] */
+  display: block; /* [cite: 232] */
+  font-size: 0.85rem; /* [cite: 233] */
+  margin-bottom: 4px; /* [cite: 234] */
+}
+
+.event-tag { font-weight: 500; color: #4b5563; } /* [cite: 235] */
+.status-badge { font-weight: bold; color: #1f2937; } /* [cite: 236] */
+.vagas-badge { font-weight: 600; color: #10b981; } 
+
+small { /* [cite: 237] */
+  color: #9ca3af; /* [cite: 238] */
+  display: block; /* [cite: 239] */
+  margin-top: 8px; /* [cite: 239] */
+}
+
+.event-actions {
+  margin-top: 18px;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px; /* [cite: 240] */
+  flex-wrap: wrap;
+}
+
+.event-actions button {
+  flex: 1;
+  padding: 8px;
+  font-size: 0.85rem;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  cursor: pointer; /* [cite: 241] */
+}
+
+.event-actions button.status-btn {
+  background: #f9fafb;
+  font-weight: 500; /* [cite: 241] */
+}
+
+.event-actions button.delete {
+  background: #ef4444;
+  color: white; /* [cite: 241] */
+  border-color: #ef4444; /* [cite: 242] */
+}
+
+/* =========================================
+   ESTILIZAÇÃO MARCANTE 3: BOTÃO DE VAGAS
+   ========================================= */
+.event-actions button.enroll-btn {
+  background-color: #10b981;
+  color: white;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.event-actions button.enroll-btn:disabled {
+  background-color: #9ca3af;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.event-actions button.enroll-btn:hover:not(:disabled) {
+  background-color: #047857; /* Darker green on hover */
+}
+
+/* Estilos do Modal e Botão Flutuante [cite: 252] */
+.floating-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  border: none;
+  box-shadow: 0 18px 30px rgba(38, 115, 255, 0.22);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.floating-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 34px rgba(38, 115, 255, 0.28);
+}
+
+.floating-btn img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0,0,0,0.6); /* Slightly darker overlay */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: 10px; /* */
+  max-width: 400px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.25); /* Stronger, softer shadow */
+}
+
+.modal-content ul {
+  padding-left: 20px;
+  line-height: 1.6;
+}
+
+.close-modal {
+  margin-top: 20px;
+  width: 100%;
+  padding: 10px; /* */
+  background-color: #1f2937; /* Darker, more professional close button */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.close-modal:hover {
+  background-color: #111827; /* Even darker on hover */
+}

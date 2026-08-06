@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Monitoramento de Sensores</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header: Logo, título e indicador de conexão -->
+    <header class="header-container">
+        <div class="logo-titulo">
+            <span class="logo-icone">📡</span>
+            <h1>Dashboard de Sensores</h1>
+        </div>
+        <div class="status-conexao online" id="indicador-conexao">
+            <span class="ponto-status"></span> Online
+        </div>
+    </header>
+
+    <!-- Main: Controles/Filtros e Grid Principal -->
+    <main class="main-container">
+        <!-- Seção de Filtros e Controles -->
+        <section class="secao-controles" aria-label="Filtros e Controles">
+            <div class="grupo-controle">
+                <label for="select-tipo">Filtrar por tipo:</label>
+                <select id="select-tipo" class="input-select">
+                    <option value="Todos">Todos</option>
+                    <option value="Temperatura">Temperatura</option>
+                    <option value="Umidade">Umidade</option>
+                    <option value="Pressão">Pressão</option>
+                </select>
+            </div>
+            <button id="btn-atualizar" class="btn-atualizar">
+                🔄 Atualizar Dados
+            </button>
+        </section>
+
+        <!-- Seção do Grid de Sensores -->
+        <section class="secao-grid" aria-label="Grid de Sensores">
+            <div id="grid-sensores" class="grid-sensores">
+                <!-- Cards dos sensores renderizados via JS -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer: Copyright e Timestamp -->
+    <footer class="footer-container">
+        <p>© 2026 Sistema de Monitoramento IoT. Todos os direitos reservados.</p>
+        <p>Última atualização: <span id="timestamp-atualizacao">--:--:--</span></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

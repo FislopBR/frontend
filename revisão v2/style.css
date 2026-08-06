@@ -1,0 +1,99 @@
+/* Variáveis CSS (:root) */
+:root {
+  --bg: #f4f6f9;
+  --card-bg: #ffffff;
+  --text: #1e293b;
+  --border: #cbd5e1;
+  --alerta-bg: #fef2f2;
+  --alerta-border: #fca5a5;
+  --alerta-text: #991b1b;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+/* Estrutura Macro Integrada */
+.header-container, 
+.secao-controles, 
+.footer-container {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Grid Macro de Sensores (Mínimo 3 Colunas no Desktop) */
+.grid-sensores {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+/* Flexbox Interno dos Cards */
+.card-sensor {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.card-topo, 
+.card-rodape {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-valor {
+  font-size: 1.75rem;
+  font-weight: bold;
+}
+
+/* Estado de Alerta (Sensor Crítico / Temperatura > 35°C) */
+.card-alerta {
+  background-color: var(--alerta-bg);
+  border-color: var(--alerta-border);
+}
+
+.card-alerta .card-valor {
+  color: var(--alerta-text);
+}
+
+/* Responsividade (1 Coluna no Mobile via Media Query) */
+@media (max-width: 600px) {
+  .grid-sensores {
+    grid-template-columns: 1fr;
+  }
+  
+  .secao-controles {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: stretch;
+  }
+}
